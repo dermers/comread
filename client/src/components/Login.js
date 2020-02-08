@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import AuthService from './auth/authService'
+import AuthService from '../auth/authService';
 import "./Login.css";
 
 export default class Login extends Component {
@@ -19,17 +19,14 @@ export default class Login extends Component {
   }
 
   login = (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     const credentials = {email: this.state.email, password: this.state.password};
     AuthService.login(credentials).then(res => {
-      console.log('then!!')
-      console.log(res.data)
         if(res.status === 200){
             localStorage.setItem("userInfo", JSON.stringify(res.data));
-            console.log(localStorage.getItem("userInfo"))
-            //this.props.history.push('/account');
+            this.props.history.push('/account');
         }else {
-            this.setState({message: res.data.message});
+            //this.setState({message: res.data.message});
         }
     });
 };
