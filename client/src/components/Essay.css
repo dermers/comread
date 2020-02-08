@@ -1,0 +1,25 @@
+.essay-center {
+  width:  65vw;
+  height: 85vh;
+  background-color: blanchedalmond !important;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin: auto;
+}
+
+.essaybox{
+    width:  60%;
+    height: 65%;
+    margin: auto;
+    margin-bottom: 10%;
+    resize: vertical;
+}
+
+h1 {
+    width: 20vw;
+    background: red;
+    margin: auto;
+}
