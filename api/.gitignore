@@ -20,3 +20,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+<<<<<<< HEAD
+=======
+
+# ignore Gemfile.lock
+Gemfile.lock
+>>>>>>> 20b7e2243e3a187ab1426685071d6054595c7361
