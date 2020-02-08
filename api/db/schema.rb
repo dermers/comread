@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2020_02_08_105521) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "chunks", force: :cascade do |t|
+    t.integer "essay_id"
+    t.text "body"
+    t.text "feedback"
+    t.integer "reviewer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "essays", force: :cascade do |t|
     t.integer "user_id"
     t.text "body"

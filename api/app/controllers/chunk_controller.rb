@@ -4,7 +4,7 @@ class ChunkController < ApplicationController
     def create
         @chunk = Chunk.new(chunk_params)
         if Essay.find(@chunk.essay_id).nil?
-            render json: { errors: "that user does not exist" },
+            render json: { errors: "that essay does not exist" },
                    status: :unprocessable_entity
         end
         if @chunk.save
