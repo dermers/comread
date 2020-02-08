@@ -26,6 +26,9 @@ class EssayController < ApplicationController
 
   # DELETE /essay/{user_id}
   def destroy
+    Chunk.where(user_id: 3).each do |c|
+        c.destroy!
+    end
     @essay = Essay.find_by!(user_id: params[:_user_id])
     rescue ActiveRecord::RecordNotFound
         render json: { errors: 'Essay not found' }, status: :not_found

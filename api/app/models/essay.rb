@@ -7,7 +7,7 @@ class Essay < ApplicationRecord
     private
 
     def distribute
-      chunk_bodies = body.split('. ')
+      chunk_bodies = body.split(/(?<=[?.!])/)
       i = 0
       chunk_bodies.each do |chunk_body|
         r_id = User.offset(rand(User.count)).first.id
