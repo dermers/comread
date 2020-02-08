@@ -4,7 +4,6 @@ import AuthService from '../auth/authService';
 import "./Login.css";
 
 export default class Login extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
