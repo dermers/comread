@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-    if @user.score == null
+    if @user.score.nil?
         score = 0
     end
     if @user.save
