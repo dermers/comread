@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, param: :_username
   post '/essay', to: 'essay#create'
   get '/essay/:_user_id', to: 'essay#show', param: :_user_id
-  post '/chunk', to: 'chunk#create'
+  delete '/essay/:_user_id', to: 'essay#destroy', param: :_user_id
   post '/auth/login', to: 'authentication#login'
   get '/*a', to: 'application#not_found'
 end

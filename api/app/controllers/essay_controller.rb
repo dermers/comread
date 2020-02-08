@@ -24,6 +24,14 @@ class EssayController < ApplicationController
     end
   end
 
+  # DELETE /essay/{user_id}
+  def destroy
+    @essay = Essay.find_by!(user_id: params[:_user_id])
+    rescue ActiveRecord::RecordNotFound
+        render json: { errors: 'Essay not found' }, status: :not_found
+    else  
+        @essay.destroy
+  end  
 
     private
 
