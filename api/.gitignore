@@ -22,4 +22,4 @@
 /config/master.key
 
 # ignore Gemfile.lock
-/Gemfile.lock
+Gemfile.lock
