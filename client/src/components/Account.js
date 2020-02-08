@@ -25,8 +25,10 @@ export default class Account extends Component {
         return (
             this.state.profileLoaded &&
             <Card style={{ width: '18rem'}}>
-                <Card.Title>{this.state.username}</Card.Title>
+                <Card.Title>{this.state.user.username}</Card.Title>
+                <Card.Body>
 
+                </Card.Body>
             </Card>
         )
     }

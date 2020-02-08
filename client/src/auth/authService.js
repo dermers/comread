@@ -4,12 +4,11 @@ const USER_API_BASE_URL = 'http://localhost:3000/auth/';
 
 class AuthService {
 
-    login(credentials){
-        console.log('in login')
+    login(credentials) {
         return axios.post(USER_API_BASE_URL + "login", credentials);
     }
 
-    getUserInfo(){
+    getUserInfo() {
         return JSON.parse(localStorage.getItem("userInfo"));
     }
 

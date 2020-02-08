@@ -11,8 +11,8 @@ import './custom.css'
 function App() {
   return (
     <Router>
+      <NavBar/>
       <div id="app">
-        <NavBar/>
         <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/login' component={Login} />
