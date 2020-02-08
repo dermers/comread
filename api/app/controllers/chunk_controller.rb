@@ -3,7 +3,8 @@ class ChunkController < ApplicationController
     def show_all
         render json: 
             Chunk.where(user_id: params[:_user_id])
-                 .where.not(reviewer_id: nil).all
+                 .where.not(reviewer_id: nil)
+                 .order(:index).all
     end    
 end
 

@@ -26,13 +26,6 @@ ActiveRecord::Schema.define(version: 2020_02_08_171142) do
     t.boolean "rating"
   end
 
-  create_table "documents", force: :cascade do |t|
-    t.string "name"
-    t.string "path"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "essays", force: :cascade do |t|
     t.integer "user_id"
     t.text "body"
