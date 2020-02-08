@@ -18,7 +18,8 @@ class Essay < ApplicationRecord
             user_id: user_id,
             body: chunk_body,
             reviewer_id: r_id,
-            index: i
+            index: i,
+            rating: false
         )
         i += 1
       end
