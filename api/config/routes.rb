@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/essay', to: 'essay#create'
   get '/essay/:_user_id', to: 'essay#show', param: :_user_id
   delete '/essay/:_user_id', to: 'essay#destroy', param: :_user_id
+  get '/allchunks/:_user_id', to: 'chunk#show_all', param: :_user_id
   post '/auth/login', to: 'authentication#login'
   get '/*a', to: 'application#not_found'
 end
