@@ -4,7 +4,16 @@ class ChunkController < ApplicationController
         render json: 
             Chunk.where(user_id: params[:_user_id])
                  .where.not(reviewer_id: nil)
-                 .order(:index).all
+                 .order(:index).all,
+            status: :ok
+    end    
+
+    # POST /chunkrating/{chunk_id}
+    def update_rating
+        c = Chunk.find(params[:_chunk_id])
+        c.rating = true
+        c.save!
+        return json: c, status: :ok
     end    
 end
 

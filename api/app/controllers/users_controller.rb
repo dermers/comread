@@ -22,6 +22,9 @@ class UsersController < ApplicationController
     if @user.ready.nil?
         @user.ready = false
     end
+    if @user.submitted.nil?
+        @user.submitted = false
+    end    
     if @user.save
       render json: @user, status: :created
     else
@@ -34,6 +37,15 @@ class UsersController < ApplicationController
   def update
     unless @user.update(user_params)
       render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
+    end
+  end
+
+  # PUT /users_id/{user_id}
+  def update_by_id
+    user = User.find(params[:_user_id])
+    unless user.update(user_params)
+      render json: { errors: user.errors.full_messages },
              status: :unprocessable_entity
     end
   end
