@@ -1,5 +1,14 @@
 class EssayController < ApplicationController
   
+  # GET /essay/{user_id}
+  def show
+    @essay = Essay.find_by!(user_id: params[:_user_id])
+    rescue ActiveRecord::RecordNotFound
+      render json: { errors: 'Essay not found' }, status: :not_found
+    else  
+      render json: @essay, status: :ok
+  end
+
   # POST /essay
   def create
     @essay = Essay.new(essay_params)
