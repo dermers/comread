@@ -5,14 +5,14 @@ import { Route, Link, BrowserRouter as Router } from "react-router-dom"
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const routing = {
+const routing = (
     <Router>
         <div>
             <Route path="/" component={App} />
             
         </div>
     </Router>
-}
+)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
