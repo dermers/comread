@@ -12,9 +12,8 @@ class UserService {
     }
 
     changeUserData(userInfo, updating) {
-        return axios.put(USER_API_BASE_URL + userInfo.username, { headers: { "Authorization" : userInfo.token} },
-        updating);
+        return axios.put(USER_API_BASE_URL + userInfo.username, updating, { headers: { "Authorization" : userInfo.token } });
     }
 }
- 
+
 export default new UserService();
