@@ -64,21 +64,22 @@ export default class Account extends Component {
     render() {
         return (
             this.state.profileLoaded &&
-            <div class="grid-container">
-                <div class="user-info">
+            <div className="grid-container">
+                <div className="user-info">
                     <Jumbotron>
                         <h1>Hi, {this.state.user.username}!</h1>
                         <h3>Account Balance: {this.state.user.score} credits</h3>
                     </Jumbotron>
                 </div>
-                <div class="user-ready">
+                <div className="user-ready">
                         {this.renderUserReady()}
                 </div>
-                <div class="user-essay">
+                <div className="user-essay">
                     <h2>essay status card</h2>
                 </div>
-                <div class="user-queue">
-                    <h2>queue goes here</h2>
+                <div className="user-queue">
+                    <h3>Provide Feedback</h3>
+                    <hr className="break"/>
                 </div>
             </div>
         )
