@@ -1,4 +1,5 @@
 class EssayController < ApplicationController
+  before_action :authorize_request
   
   # GET /essay/{user_id}
   def show
