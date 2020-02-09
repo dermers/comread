@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 
-export default class NavBar extends Component {
+class NavBar extends Component {
+    constructor(props) {
+        super(props);
+        this.logout = this.logout.bind(this);
+      }
 
-    
+    logout() {
+        localStorage.clear();
+        this.props.history.push('/');
+    }
 
     render() {
         return (
@@ -14,7 +22,7 @@ export default class NavBar extends Component {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/account">Account</Nav.Link>
                 {(localStorage.getItem("userInfo") !== null) ?
-                    <Nav.Link href="/logout">Logout</Nav.Link> :
+                    <Nav.Link onClick={this.logout} href="#">Logout</Nav.Link> :
                     <Nav.Link href="/login">Login</Nav.Link>
                 }
                 </Nav>
@@ -23,3 +31,5 @@ export default class NavBar extends Component {
         )
     }
 }
+
+export default withRouter(NavBar)
