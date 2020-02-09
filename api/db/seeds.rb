@@ -8,4 +8,5 @@
 
 User.create([{username: 'trevor', name: 'tevors', email: 'stenson124@gmail.com', password: '123456', score: 0, ready: false},
              {username: 'gibby', name: 'gibbyf', email: 'gibby@gmail.com', password: '123456', score: 0, ready: false},
-             {username: 'shawn', name: 'shawnd', email: 'shawn@gmail.com', password: '123456', score: 0, ready: false}])
+             {username: 'shawn', name: 'shawnd', email: 'shawn@gmail.com', password: '123456', score: 0, ready: false},
+             {username: 'nithin', name: 'nithin', email: 'nithin@yahoo.com', password: '123456', score: 5, ready: true}])
