@@ -17,3 +17,7 @@
   margin: auto;
   margin-top: 5%;
 }
+
+.failMsg {
+  color: red;
+}
