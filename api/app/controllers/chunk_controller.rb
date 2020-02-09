@@ -1,12 +1,20 @@
 class ChunkController < ApplicationController
+    # GET /reviewedchunks/{user_id}
+    def show_all
+        render json: 
+            Chunk.where(user_id: params[:_user_id])
+                 .where.not(feedback: nil)
+                 .order(:index).all,
+            status: :ok
+    end
+    
     # GET /allchunks/{user_id}
     def show_all
         render json: 
             Chunk.where(user_id: params[:_user_id])
-                 .where.not(reviewer_id: nil)
                  .order(:index).all,
             status: :ok
-    end    
+    end 
 
     # POST /chunkrating/{chunk_id}
     def update_rating
