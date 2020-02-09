@@ -9,13 +9,17 @@
     position: relative;
     max-height: 100%;
     overflow: auto;
-    text-align: center;
+    text-align: left;
 }
 
-#date {
-
+.date {
+    margin: auto;
+    float: left;
 }
 
 #score {
-    float: right;
+    text-align: right;
+    color: green;
+    font-size: 5vh;
+    margin: auto;
 }

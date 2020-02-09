@@ -3,20 +3,21 @@
   height: 85vh;
   background-color: blanchedalmond !important;
   margin: auto;
-}
-
-.submit-title {
   text-align: center;
-  margin: auto;
-  width: 20vw;
-  background: red;
-  margin: auto;
 }
-
 .essaybox {
     width:  60%;
     height: 65%;
     margin: auto;
+    margin-top: 10%;
     margin-bottom: 10%;
     resize: vertical;
+}
+#header {
+  margin: auto;
+  margin-top: 5%;
+}
+
+.failMsg {
+  color: red;
 }
