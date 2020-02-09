@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import UserService from '../users/userService'
+import ChunkService from '../chunks/chunkService'
 import { Jumbotron, Card, Button, Nav } from 'react-bootstrap';
+import FeedbackList from './FeedbackList.js'
 import './Account.css'
 
 export default class Account extends Component {
@@ -17,6 +19,7 @@ export default class Account extends Component {
 
     componentDidMount() {
         this.loadUserProfile();
+        this.loadFeedbackChunks();
     }
 
     loadUserProfile() {
@@ -25,8 +28,15 @@ export default class Account extends Component {
         });
     }
 
+    loadFeedbackChunks() {
+        ChunkService.getChunksToReview(JSON.parse(localStorage.getItem("userInfo"))).then(res => {
+            if (res.status == 200) {
+                this.setState({ feedbackChunks: res.data.chunks });
+            }
+        });
+    }
+
     toggleReadyStatus() {
-        console.log("in da method")
         if(this.state.user.ready) {
             UserService.changeUserData(JSON.parse(localStorage.getItem("userInfo")), { ready : false});
         }
@@ -122,6 +132,7 @@ export default class Account extends Component {
                 <div className="user-queue">
                     <h3>Provide Feedback</h3>
                     <hr className="break"/>
+                    <FeedbackList chunks={this.state.feedbackChunks} />
                 </div>
             </div>
         )
