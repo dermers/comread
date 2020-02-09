@@ -7,7 +7,7 @@ export default class Essay extends Component {
         return (
             <div id="local">
             <Card className="essay-center">>
-                <h1>Submit an Essay</h1>
+                <h1 id="submit-title">Submit an Essay</h1>
                 <textarea type="text" className="essaybox"></textarea>
             </Card>
             </div>

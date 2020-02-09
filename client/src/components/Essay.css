@@ -5,21 +5,18 @@
   margin: auto;
 }
 
-h1 {
+.submit-title {
   text-align: center;
+  margin: auto;
+  width: 20vw;
+  background: red;
   margin: auto;
 }
 
-.essaybox{
+.essaybox {
     width:  60%;
     height: 65%;
     margin: auto;
     margin-bottom: 10%;
     resize: vertical;
-}
-
-h1 {
-    width: 20vw;
-    background: red;
-    margin: auto;
 }

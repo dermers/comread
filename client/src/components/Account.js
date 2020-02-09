@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Card } from 'react-bootstrap'
 import UserService from '../users/userService'
+import { Jumbotron } from 'react-bootstrap';
+import './Account.css'
 
 export default class Account extends Component {
     constructor(props) {
@@ -24,12 +25,23 @@ export default class Account extends Component {
     render() {
         return (
             this.state.profileLoaded &&
-            <Card style={{ width: '18rem'}}>
-                <Card.Title>{this.state.user.username}</Card.Title>
-                <Card.Body>
-
-                </Card.Body>
-            </Card>
+            <div class="grid-container">
+                <div class="user-info">
+                    <Jumbotron>
+                        <h1>Hi, {this.state.user.username}!</h1>
+                        <h3>Account Balance: {this.state.user.score} credits</h3>
+                    </Jumbotron>
+                </div>
+                <div class="user-ready">
+                    <h2>user stuff goes here</h2>
+                </div>
+                <div class="user-essay">
+                    <h2>user stuff goes here</h2>
+                </div>
+                <div class="user-queue">
+                    <h2>user stuff goes here</h2>
+                </div>
+            </div>
         )
     }
 }
