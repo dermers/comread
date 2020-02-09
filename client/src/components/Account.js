@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import UserService from '../users/userService'
-import { Jumbotron } from 'react-bootstrap';
+import { Jumbotron, Card, Button } from 'react-bootstrap';
 import './Account.css'
 
 export default class Account extends Component {
@@ -10,6 +10,8 @@ export default class Account extends Component {
             user: null,
             profileLoaded: false
         }
+
+        this.toggleReadyStatus = this.toggleReadyStatus.bind(this)
     }
 
     componentDidMount() {
@@ -20,6 +22,43 @@ export default class Account extends Component {
         UserService.getUserData(JSON.parse(localStorage.getItem("userInfo"))).then(res => {
             this.setState({ user: res.data, profileLoaded: true });
         });
+    }
+
+    toggleReadyStatus() {
+        console.log("in da method")
+        if(this.state.user.ready) {
+            UserService.changeUserData(JSON.parse(localStorage.getItem("userInfo")), { ready : false});
+        }
+        else {
+            UserService.changeUserData(JSON.parse(localStorage.getItem("userInfo")), { ready : true});
+        }
+    }
+
+    renderUserReady() {
+        if(this.state.user.ready) {
+            return (
+                <Card border="success">
+                <Card.Body>
+                <Card.Title>Done for the day?</Card.Title>
+                <Card.Text>
+                    Don't forget to change your status before logging off.
+                </Card.Text>
+                <Button variant="secondary" onClick={this.toggleReadyStatus}>I'm done editing</Button>
+                </Card.Body>
+                 </Card>
+            )} 
+            else {
+                return (
+                <Card bg="dark" text="white">
+                <Card.Body>
+                    <Card.Title>Wanna help a comrade out?</Card.Title>
+                    <Card.Text>
+                        Earn more credits by opting in to edit their work.
+                    </Card.Text>
+                    <Button variant="success" onClick={this.toggleReadyStatus}>I'm ready to edit</Button>
+                </Card.Body>
+                </Card>
+                )}
     }
 
     render() {
@@ -33,13 +72,13 @@ export default class Account extends Component {
                     </Jumbotron>
                 </div>
                 <div class="user-ready">
-                    <h2>user stuff goes here</h2>
+                        {this.renderUserReady()}
                 </div>
                 <div class="user-essay">
-                    <h2>user stuff goes here</h2>
+                    <h2>essay status card</h2>
                 </div>
                 <div class="user-queue">
-                    <h2>user stuff goes here</h2>
+                    <h2>queue goes here</h2>
                 </div>
             </div>
         )

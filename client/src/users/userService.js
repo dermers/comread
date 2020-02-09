@@ -10,6 +10,11 @@ class UserService {
     register(userInfo) {
         return axios.post(USER_API_BASE_URL, userInfo);
     }
-}
 
+    changeUserData(userInfo, updating) {
+        return axios.put(USER_API_BASE_URL + userInfo.username, { headers: { "Authorization" : userInfo.token} },
+        updating);
+    }
+}
+ 
 export default new UserService();
