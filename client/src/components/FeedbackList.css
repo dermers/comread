@@ -1,8 +1,11 @@
 .row {
-    height: 50px;
     width: 100%;
     border: 1px solid green;
     border-top: none;
+}
+
+.feedbackbox {
+    font-size: 12px;
 }
 
 #feedback-list {
