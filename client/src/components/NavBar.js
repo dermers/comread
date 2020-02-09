@@ -16,7 +16,7 @@ class NavBar extends Component {
     render() {
         return (
             <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">comread</Navbar.Brand>
+            <Navbar.Brand href="/">comread</Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav" className="float-right">
                 <Nav className="ml-auto">
                 <Nav.Link href="/">Home</Nav.Link>

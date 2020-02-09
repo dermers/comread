@@ -55,7 +55,7 @@ export default class Account extends Component {
                 <Card.Body>
                 <Card.Title>Done for the day?</Card.Title>
                 <Card.Text>
-                    Don't forget to change your status before logging off.
+                    Thanks for helping to creative a more supportive web!
                 </Card.Text>
                 <Button variant="secondary" onClick={this.toggleReadyStatus}>I'm done editing</Button>
                 </Card.Body>
