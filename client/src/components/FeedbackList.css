@@ -1,0 +1,21 @@
+.row {
+    height: 50px;
+    width: 100%;
+    border: 1px solid green;
+    border-top: none;
+}
+
+#feedback-list {
+    position: relative;
+    max-height: 100%;
+    overflow: auto;
+    text-align: center;
+}
+
+#date {
+
+}
+
+#score {
+    float: right;
+}

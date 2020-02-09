@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.score.nil?
-        @user.score = 0
+        @user.score = 50
     end
     if @user.ready.nil?
         @user.ready = false
