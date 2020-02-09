@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   post '/essay', to: 'essay#create'
   get '/essay/:_user_id', to: 'essay#show', param: :_user_id
   delete '/essay/:_user_id', to: 'essay#destroy', param: :_user_id
-  get '/reviewedchunks/:_user_id', to: 'chunk#show_all', param: :_user_id
+  get '/mychunks/:_reviewer_id', to: 'chunk#my_chunks', param: :_reviewer_id
+  get '/reviewedchunks/:_user_id', to: 'chunk#show_all_reviewed', param: :_user_id
   get '/allchunks/:_user_id', to: 'chunk#show_all', param: :_user_id
   post 'chunkrating/:_chunk_id', to: 'chunk#update_ranking', param: :_chunk_id
   post '/auth/login', to: 'authentication#login'
