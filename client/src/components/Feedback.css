@@ -1,6 +1,8 @@
 #main-container {
-    width: 80%;
-    height: 70%;
+    word-wrap: break-word;
+    width: 70%;
+    border: 2px solid black;
+
 }
 
 .chunk {
@@ -9,4 +11,8 @@
 
 .chunk:hover {
     border: 1px solid green;
+}
+
+.feedback {
+    text-align: center;
 }

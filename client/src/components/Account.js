@@ -75,7 +75,7 @@ export default class Account extends Component {
                         <Card.Text>
                             You have received {this.state.feedbackStatus} pieces of feedback. Please wait!
                         </Card.Text>
-                        <Button variant="success" onClick={this.sendToFeedback}>View Feedback!!!</Button>
+                        <Button variant="success" onClick={this.sendToFeedback} disabled={!this.state.canSeeFeedback}>View Feedback!!!</Button>
                     </Card.Body>
                 </Card>
             )

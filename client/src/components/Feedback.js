@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 import ChunkService from '../chunks/chunkService'
 import './Feedback.css'
 
@@ -25,7 +26,9 @@ class Feedback extends Component {
 
     renderChunk(chunk) {
         return (
-            <span title={chunk.feedback} onClick={console.log('hiii')} className="chunk">{chunk.body}</span>
+            <span title={chunk.feedback} onClick={function(e) {
+
+            }} className="chunk">{chunk.body}</span>
         )
     }
 
@@ -39,10 +42,8 @@ class Feedback extends Component {
                 <p id="main-container">
                     {this.state.chunkElements}
                 </p>
-                
-            <div onClick={this.log}>hmm</div>
+                <Button block bsSize="large" disabled={!this.validateForm()}>Complete Feedback Review</Button>
             </div>
-
         )
     }
 }
