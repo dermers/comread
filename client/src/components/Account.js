@@ -19,6 +19,7 @@ export default class Account extends Component {
         this.loadUserProfile();
     }
 
+
     loadUserProfile() {
         UserService.getUserData(JSON.parse(localStorage.getItem("userInfo"))).then(res => {
             this.setState({ user: res.data, profileLoaded: true });
@@ -26,13 +27,14 @@ export default class Account extends Component {
     }
 
     toggleReadyStatus() {
-        console.log("in da method")
         if(this.state.user.ready) {
             UserService.changeUserData(JSON.parse(localStorage.getItem("userInfo")), { ready : false});
         }
         else {
             UserService.changeUserData(JSON.parse(localStorage.getItem("userInfo")), { ready : true});
         }
+        // TODO: Make React act normal and change this
+        window.location.reload(false);
     }
 
     renderUserReady() {
@@ -101,7 +103,6 @@ export default class Account extends Component {
             
         }
     }
-
 
     render() {
         return (
