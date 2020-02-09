@@ -6,6 +6,7 @@ import Login from './components/Login.js'
 import Register from './components/Register.js';
 import Account from './components/Account.js'
 import Essay from './components/Essay.js'
+import Feedback from './components/Feedback.js'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './custom.css'
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/register' component={Register} />
         <ProtectedRoute path='/account' component={Account} />
         <ProtectedRoute path='/essay' component={Essay} />
+        <ProtectedRoute path='/feedback' component={Feedback} />
         </Switch>
       </div>
     </Router>

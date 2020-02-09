@@ -17,8 +17,7 @@ export default class Essay extends Component {
     submitEssay = () => {
         if (JSON.parse(localStorage.getItem("userInfo")).score >= 50) {
             EssayService.createEssay(JSON.parse(localStorage.getItem("userInfo")), this.state.essay).then(res => {
-                console.log('DONE CREATING ESSAY')
-                if (res.status == 201) {
+                if (res.status === 201) {
                     UserService.spendCreditsOnEssay(JSON.parse(localStorage.getItem("userInfo"))).then(res => {
                         this.props.history.push('/account')
                     })

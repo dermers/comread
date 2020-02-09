@@ -41,7 +41,7 @@ export default class Login extends Component {
     return (
       <div className="Login">
           <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bsSize="large">
+          <FormGroup controlId="email">
             <FormLabel>Email</FormLabel>
             <FormControl
               autoFocus
@@ -51,7 +51,7 @@ export default class Login extends Component {
               onChange={this.onChange}
             />
           </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
+          <FormGroup controlId="password">
             <FormLabel>Password</FormLabel>
             <FormControl
               name="password"

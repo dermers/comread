@@ -10,16 +10,18 @@ export default class Account extends Component {
         super(props);
         this.state = {
             user: null,
-            profileLoaded: false
+            profileLoaded: false,
+            feedbackStatus: '0',
+            canSeeFeedback: false
         }
 
         this.toggleReadyStatus = this.toggleReadyStatus.bind(this)
-        this.sendToEssaySubmit = this.sendToEssaySubmit.bind(this)
     }
 
     componentDidMount() {
         this.loadUserProfile();
         this.loadFeedbackChunks();
+        this.calculateFeedback();
     }
 
 
@@ -37,51 +39,46 @@ export default class Account extends Component {
         });
     }
 
-    toggleReadyStatus() {
-        if(this.state.user.ready) {
-            UserService.changeUserData(JSON.parse(localStorage.getItem("userInfo")), { ready : false});
-        }
-        else {
-            UserService.changeUserData(JSON.parse(localStorage.getItem("userInfo")), { ready : true});
-        }
-        // TODO: Make React act normal and change this
-        window.location.reload(false);
+    toggleReadyStatus = () => {
+        UserService.changeUserData(JSON.parse(localStorage.getItem("userInfo")), { ready : !this.state.user.ready}).then(res => {
+            // TODO: Make React act normal and change this
+            window.location.reload(false);
+        })
     }
 
-    renderUserReady() {
-        if(this.state.user.ready) {
-            return (
-                <Card border="success">
-                <Card.Body>
-                <Card.Title>Done for the day?</Card.Title>
-                <Card.Text>
-                    Thanks for helping to creative a more supportive web!
-                </Card.Text>
-                <Button variant="secondary" onClick={this.toggleReadyStatus}>I'm done editing</Button>
-                </Card.Body>
-                 </Card>
-            )} 
-            else {
-                return (
-                <Card bg="dark" text="white">
-                <Card.Body>
-                    <Card.Title>Wanna help a comrade out?</Card.Title>
-                    <Card.Text>
-                        Earn more credits by opting in to edit their work.
-                    </Card.Text>
-                    <Button variant="success" onClick={this.toggleReadyStatus}>I'm ready to edit</Button>
-                </Card.Body>
-                </Card>
-                )}
+    calculateFeedback() {
+        ChunkService.getFeedbackChunks(JSON.parse(localStorage.getItem("userInfo"))).then(res => {
+            let totalChunks = res.data.chunks.length
+            let filteredChunks = res.data.chunks.filter((chunk) => {
+                return chunk.feedback !== null;
+            })
+            let currentFeedback = filteredChunks.length
+            this.setState({ feedbackStatus: currentFeedback + '/' + totalChunks })
+            if (totalChunks === currentFeedback) {
+                this.setState({ canSeeFeedback: true })
+            }
+        }).catch(error => {
+            console.log(error)
+        })
     }
 
-    sendToEssaySubmit() {
-        this.props.history.push('/essay')
+    sendToFeedback() {
+        this.props.history.push('/feedback')
     }
 
     renderUserEssay() {
         if(this.state.user.submitted) {
-            
+            return (
+                <Card bg="light">
+                    <Card.Body>
+                        <Card.Title>Feedback Progress</Card.Title>
+                        <Card.Text>
+                            You have received {this.state.feedbackStatus} pieces of feedback. Please wait!
+                        </Card.Text>
+                        <Button variant="success" onClick={this.sendToFeedback}>View Feedback!!!</Button>
+                    </Card.Body>
+                </Card>
+            )
         }
         else {
             // TODO: Yes, technically this will be wrong if the user has 49 points. 
@@ -104,7 +101,7 @@ export default class Account extends Component {
                             <Card.Title>Need feedback?</Card.Title>
                             <Card.Text>
                                 You have enough points to submit an essay! 
-                                <Nav.Link variant="pills" onClick={this.sendToEssaySubmit} 
+                                <Nav.Link variant="pills"
                                 href="/essay">Submit an essay</Nav.Link>
                             </Card.Text>
                         </Card.Body>
@@ -116,6 +113,28 @@ export default class Account extends Component {
     }
 
     render() {
+        
+        let userReadyCard = 
+        this.state.user ?
+        this.state.user.ready ?
+        <Card border="success">
+        <Card.Body>
+        <Card.Title>Done for the day?</Card.Title>
+        <Card.Text>
+            Thanks for helping to creative a more supportive web!
+        </Card.Text>
+        <Button variant="secondary" onClick={this.toggleReadyStatus}>I'm done editing</Button>
+        </Card.Body>
+         </Card> :
+         <Card bg="dark" text="white">
+         <Card.Body>
+             <Card.Title>Wanna help a comrade out?</Card.Title>
+             <Card.Text>
+                 Earn more credits by opting in to edit their work.
+             </Card.Text>
+             <Button variant="success" onClick={this.toggleReadyStatus}>I'm ready to edit</Button>
+         </Card.Body>
+         </Card> : null
         return (
             this.state.profileLoaded &&
             <div className="grid-container">
@@ -126,7 +145,7 @@ export default class Account extends Component {
                     </Jumbotron>
                 </div>
                 <div className="user-ready">
-                    {this.renderUserReady()}
+                    {userReadyCard}
                 </div>
                 <div className="user-essay">
                     {this.renderUserEssay()}

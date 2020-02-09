@@ -1,0 +1,12 @@
+#main-container {
+    width: 80%;
+    height: 70%;
+}
+
+.chunk {
+    border: 1px solid red;
+}
+
+.chunk:hover {
+    border: 1px solid green;
+}
