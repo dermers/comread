@@ -31,7 +31,7 @@ export default class Account extends Component {
 
     loadFeedbackChunks() {
         ChunkService.getChunksToReview(JSON.parse(localStorage.getItem("userInfo"))).then(res => {
-            if (res.status == 200) {
+            if (res.status === 200) {
                 this.setState({ feedbackChunks: res.data.chunks });
             }
         });
