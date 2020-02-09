@@ -1,5 +1,5 @@
 class ChunkController < ApplicationController
-    before_action :authorize_request
+    before_action :authorize_request, except: :update
     # GET /reviewedchunks/{user_id}
     def show_all_reviewed
         render json: 
@@ -20,13 +20,23 @@ class ChunkController < ApplicationController
     # GET /mychunks/{reviewer_id}
     def my_chunks
         mychunks = Chunk.where(reviewer_id: params[:_reviewer_id])
+                        .where(feedback: nil)
                         .order(created_at: :desc).all
         render json: { chunks: mychunks },
             status: :ok
     end
 
+    # POST /mychunks/{chunk_id-fb}
+    def update
+        myParams = params[:_chunk_id_and_fb].split('-')
+        chunk = Chunk.find(myParams[0])
+        chunk.feedback = myParams[1]
+        chunk.save!
+        render status: :ok
+    end    
+
     # POST /chunkrating/{chunk_id}
-    def update_rating
+    def update_ranking
         c = Chunk.find(params[:_chunk_id])
         c.rating = true
         c.save!

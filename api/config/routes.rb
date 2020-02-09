@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/reviewedchunks/:_user_id', to: 'chunk#show_all_reviewed', param: :_user_id
   get '/allchunks/:_user_id', to: 'chunk#show_all', param: :_user_id
   post 'chunkrating/:_chunk_id', to: 'chunk#update_ranking', param: :_chunk_id
+  post '/chunk/:_chunk_id_and_fb', to: 'chunk#update', param: :_chunk_id_and_fb
   post '/auth/login', to: 'authentication#login'
   get '/*a', to: 'application#not_found'
 end

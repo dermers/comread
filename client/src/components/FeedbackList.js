@@ -17,7 +17,6 @@ export default class FeedbackList extends Component {
     }
     
     myHandleSubmit(e) {
-        e.preventDefault();
         console.log(this.textInput);
         console.log(this.chunkId);
         console.log(JSON.parse(localStorage.getItem("userInfo")));
