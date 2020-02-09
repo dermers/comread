@@ -14,6 +14,11 @@ class UserService {
     changeUserData(userInfo, updating) {
         return axios.put(USER_API_BASE_URL + userInfo.username, updating, { headers: { "Authorization" : userInfo.token } });
     }
+
+    spendCreditsOnEssay(userInfo) {
+        return axios.put(USER_API_BASE_URL + userInfo.username, 
+            { score: userInfo.score - 50}, { headers: { "Authorization" : userInfo.token}});
+    }
 }
 
 export default new UserService();
