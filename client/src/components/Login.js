@@ -63,10 +63,13 @@ export default class Login extends Component {
           <Button block bsSize="large" disabled={!this.validateForm()} onClick={this.login}>
             Login
           </Button>
+
+          <Button block bsSize="large" variant="success" onClick={() => this.props.history.push("/register")}>
+            Register
+          </Button>
         </form>
    
       </div>
     );
   }
-  
 }

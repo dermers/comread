@@ -9,6 +9,7 @@ import Essay from './components/Essay.js'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './custom.css'
+import ProtectedRoute from './components/ProtectedRoute.js';
 
 function App() {
   return (
@@ -19,11 +20,11 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <Route exact path='/account' component={Account} />
-        <Route exact path='/essay' component={Essay} />
+        <ProtectedRoute path='/account' component={Account} />
+        <ProtectedRoute path='/essay' component={Essay} />
         </Switch>
       </div>
-  </Router>
+    </Router>
   );
 }
 
