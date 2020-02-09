@@ -16,8 +16,9 @@
 .user-queue {
     grid-area: 1 / 2 / 4 / 3;
     width: 100%;
-    height: 100%;
+    height: 600px;
     text-align: center;
+    position: relative;
 }
 
 .break {
